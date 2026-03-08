@@ -53,7 +53,7 @@ registry:
 
 ```yaml
 n8n:
-  api_url: http://\<HOST_IP\>:5678/
+  api_url: http://<HOST_IP>:5678/
 ```
 
 ## Starten / Stoppen

@@ -21,5 +21,5 @@ services:
       # Obsidian API Key
       - OBSIDIAN_API_KEY=${OBSIDIAN_API_KEY:-}
       # n8n API URL (aus config.yaml)
-      - N8N_API_URL=${N8N_API_URL:-http://\<HOST_IP\>:5678/}
+      - N8N_API_URL=${N8N_API_URL}
       - N8N_API_KEY=${N8N_API_KEY:-}
