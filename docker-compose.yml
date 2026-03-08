@@ -1,0 +1,25 @@
+services:
+  mcp-gateway:
+    image: docker/mcp-gateway:latest
+    container_name: mcp-gateway
+    ports:
+      - "3000:3000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/vugas/.docker/mcp:/mcp
+    command: >
+      --catalog=/mcp/catalogs/docker-mcp.yaml
+      --config=/mcp/config.yaml
+      --registry=/mcp/registry.yaml
+      --tools-config=/mcp/tools.yaml
+      --transport=sse
+      --port=3000
+    restart: unless-stopped
+    environment:
+      # GitHub Token für github-official MCP-Server
+      - GITHUB_PERSONAL_ACCESS_TOKEN=${GITHUB_PERSONAL_ACCESS_TOKEN:-}
+      # Obsidian API Key
+      - OBSIDIAN_API_KEY=${OBSIDIAN_API_KEY:-}
+      # n8n API URL (aus config.yaml)
+      - N8N_API_URL=${N8N_API_URL:-http://\<HOST_IP\>:5678/}
+      - N8N_API_KEY=${N8N_API_KEY:-}
